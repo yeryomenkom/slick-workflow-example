@@ -9,7 +9,7 @@ class FcmRepository(db: Database)(implicit val ec: ExecutionContext) {
   import db._
 
   def getFcmTokens(userIds: Iterable[Int]): Future[Seq[DbFcmToken]] = run {
-    DbFcmTokenTableQuery.filter(_.userId inSet userIds).result
+    DbFcmTokenQuery.filter(_.userId inSet userIds).result
   }
 
 }
